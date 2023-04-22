@@ -7,7 +7,6 @@ services:
       - 80:80
     depends_on:
       - user-service
-      - kafka-manager
     restart: always
 
   user-service:
@@ -48,7 +47,7 @@ services:
     image: hlebalbau/kafka-manager:latest
     container_name: kafka-manager
     ports:
-      - 9000
+      - "80:9000"
     environment:
       ZK_HOSTS: zookeeper:2181
       APPLICATION_SECRET: letmein
