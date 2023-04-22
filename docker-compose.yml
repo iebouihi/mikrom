@@ -1,0 +1,20 @@
+
+services:
+
+  micro-commerce:
+    build: reverse-proxy
+    ports:
+      - 80:80
+    depends_on:
+      - user-service
+    restart: always
+
+  user-service:
+    build: user-service
+    ports:
+      - 80
+    volumes:
+      - .:/usr/app
+
+volumes:
+  data:
